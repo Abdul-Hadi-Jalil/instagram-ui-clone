@@ -11,7 +11,7 @@ class BubbleStories extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(backgroundColor: Colors.grey, radius: 40),
-          SizedBox(height: 12),
+          SizedBox(height: 8),
           Text(name),
         ],
       ),

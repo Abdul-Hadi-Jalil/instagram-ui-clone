@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_ui_clone/widgets/bubble_stories.dart';
+import 'package:instagram_ui_clone/widgets/user_posts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -38,19 +40,35 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 115,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // User Profile Stories
+            SizedBox(
+              height: 108,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: people.length,
+                itemBuilder: (context, index) {
+                  return BubbleStories(name: people[index]);
+                },
+              ),
+            ),
+
+            SizedBox(height: 30),
+
+            // User Posts
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
               itemCount: people.length,
               itemBuilder: (context, index) {
-                return BubbleStories(name: people[index]);
+                return UserPosts(userName: people[index]);
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
