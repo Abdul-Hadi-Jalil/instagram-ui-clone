@@ -7,7 +7,10 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: Container(
           margin: EdgeInsets.all(8),
           padding: EdgeInsets.all(8),
